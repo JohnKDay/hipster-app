@@ -81,8 +81,8 @@ func main() {
 	log.Level = logrus.DebugLevel
 	log.Formatter = &logrus.TextFormatter{}
 
-	go initProfiling(log, "frontend", "1.0.0")
-	go initTracing(log)
+//	go initProfiling(log, "frontend", "1.0.0")
+//	go initTracing(log)
 
 	srvPort := port
 	if os.Getenv("PORT") != "" {

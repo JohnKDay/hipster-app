@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: weave-scope-load-balancer
+spec:
+  selector:
+    app: weave-scope
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 4040
+  type: LoadBalancer
+
