@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: 10.15.0.63/hipster-app/checkoutservice
+          image: 10.30.2.223:443/hipster-app/checkoutservice
           ports:
           - containerPort: 5050
           readinessProbe:

@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: 10.15.0.63/hipster-app/frontend
+          image: 10.30.2.223:443/hipster-app/frontend
           ports:
           - containerPort: 8080
           readinessProbe:

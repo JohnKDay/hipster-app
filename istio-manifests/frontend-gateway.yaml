@@ -33,7 +33,7 @@ metadata:
   name: frontend-ingress
 spec:
   hosts:
-  - "*"
+  - "*.hipster.sslip.io"
   gateways:
   - frontend-gateway
   http:
