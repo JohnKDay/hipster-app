@@ -14,19 +14,20 @@
  * limitations under the License.
  */
 
-require('@google-cloud/profiler').start({
-  serviceContext: {
-      service: 'currencyservice',
-      version: '1.0.0'
-  }
-});
- require('@google-cloud/trace-agent').start();
- require('@google-cloud/debug-agent').start({
-  serviceContext: {
-    service: 'currencyservice',
-    version: 'VERSION'
-  }
-})
+/*require('@google-cloud/profiler').start({
+*  serviceContext: {
+*      service: 'currencyservice',
+*      version: '1.0.0'
+*  }
+*});
+* require('@google-cloud/trace-agent').start();
+* require('@google-cloud/debug-agent').start({
+*  serviceContext: {
+*    service: 'currencyservice',
+*    version: 'VERSION'
+*  }
+*})
+*/
 
 const path = require('path');
 const grpc = require('grpc');

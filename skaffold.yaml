@@ -18,25 +18,25 @@ build:
   tagPolicy:
     gitCommit: {}
   artifacts:
-  - imageName: 10.30.2.223:443/hipster-app/emailservice
+  - imageName: REGISTRYSERVER/hipster-app/emailservice
     workspace: src/emailservice
-  - imageName: 10.30.2.223:443/hipster-app/productcatalogservice
+  - imageName: REGISTRYSERVER/hipster-app/productcatalogservice
     workspace: src/productcatalogservice
-  - imageName: 10.30.2.223:443/hipster-app/recommendationservice
+  - imageName: REGISTRYSERVER/hipster-app/recommendationservice
     workspace: src/recommendationservice
-  - imageName: 10.30.2.223:443/hipster-app/shippingservice
+  - imageName: REGISTRYSERVER/hipster-app/shippingservice
     workspace: src/shippingservice
-  - imageName: 10.30.2.223:443/hipster-app/checkoutservice
+  - imageName: REGISTRYSERVER/hipster-app/checkoutservice
     workspace: src/checkoutservice
-  - imageName: 10.30.2.223:443/hipster-app/paymentservice
+  - imageName: REGISTRYSERVER/hipster-app/paymentservice
     workspace: src/paymentservice
-  - imageName: 10.30.2.223:443/hipster-app/currencyservice
+  - imageName: REGISTRYSERVER/hipster-app/currencyservice
     workspace: src/currencyservice
-  - imageName: 10.30.2.223:443/hipster-app/cartservice
+  - imageName: REGISTRYSERVER/hipster-app/cartservice
     workspace: src/cartservice
-  - imageName: 10.30.2.223:443/hipster-app/frontend
+  - imageName: REGISTRYSERVER/hipster-app/frontend
     workspace: src/frontend
-  - imageName: 10.30.2.223:443/hipster-app/loadgenerator
+  - imageName: REGISTRYSERVER/hipster-app/loadgenerator
     workspace: src/loadgenerator
 deploy:
   kubectl:
