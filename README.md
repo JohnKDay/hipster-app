@@ -1,3 +1,24 @@
+# Modification of hipster-app for Cisco Container Platform
+
+## This is a small modification of the Goolgle hipster-app with the GKE Stackdriver functions removed and configured to push container images to an on-premise Harbor registry and deploy on a CCP on prem cluster.
+
+###   TL;DR
+
+1. Set environment variables.  
+  export MGMT_HOST=\<IP address of CCP CP\>  
+  export PASS=\<Password of CCP CP admin\>  
+  export HARBOR_PASS=\<Password of Harbor admin\> (only needed if HARBOR_PASS \<\> PASS)  
+2. Run and setup Harbor registry access.  
+  ./1-pull-harbor-ca-file.sh \<Harbor TC name\>
+3. Download the KUBECONFIG file for the hipster-app TC.  
+  ./2-pull-CCP-k8s-KUBECONFIG.sh \<Hipster-app TC name\>
+4. Run script to configure Harbor regisry for skaffold.   
+  ./3-change_registry_address.sh \<IP address of Harbor TC ngix LB\>  
+5. Run the skaffold app to build, push and deploy the hipster-app.  
+  ./4-build_push_deploy_hipster-app.sh
+  
+-----------------------
+
 # Hipster Shop: Cloud-Native Microservices Demo Application
 
 This project contains a 10-tier microservices application. The application is a
