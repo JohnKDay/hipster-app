@@ -25,7 +25,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: REGISTRYSERVER/hipster-app/productcatalogservice
+        image: REGISTRYSERVER/library/productcatalogservice
         ports:
         - containerPort: 3550
         readinessProbe:

@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: REGISTRYSERVER/hipster-app/frontend
+          image: REGISTRYSERVER/library/frontend
           ports:
           - containerPort: 8080
           readinessProbe:

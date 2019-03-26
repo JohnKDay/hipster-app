@@ -25,7 +25,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: REGISTRYSERVER/hipster-app/emailservice
+        image: REGISTRYSERVER/library/emailservice
         ports:
         - containerPort: 8080
         readinessProbe:
