@@ -431,49 +431,49 @@ spec:
     port: 7070
     targetPort: 7070
 ---
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: loadgenerator
-spec:
-  selector:
-    matchLabels:
-      app: loadgenerator
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: loadgenerator
-    spec:
-      terminationGracePeriodSeconds: 5
-      restartPolicy: Always
-      initContainers:
-      - name: wait-frontend
-        image: alpine:3.6
-        command: ['sh', '-c', 'set -x;  apk add --no-cache curl && 
-          until timeout -t 2 curl -f "http://${FRONTEND_ADDR}"; do 
-            echo "waiting for http://${FRONTEND_ADDR}"; 
-            sleep 2;
-          done;']
-        env:
-        - name: FRONTEND_ADDR
-          value: "frontend:80"
-      containers:
-      - name: main
-        image: gcr.io/google-samples/microservices-demo/loadgenerator:v0.1.2
-        env:
-        - name: FRONTEND_ADDR
-          value: "frontend:80"
-        - name: USERS
-          value: "10"
-        resources:
-          requests:
-            cpu: 300m
-            memory: 256Mi
-          limits:
-            cpu: 500m
-            memory: 512Mi
----
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+#  name: loadgenerator
+#spec:
+#  selector:
+#    matchLabels:
+#      app: loadgenerator
+#  replicas: 1
+#  template:
+#    metadata:
+#      labels:
+#        app: loadgenerator
+#    spec:
+#      terminationGracePeriodSeconds: 5
+#      restartPolicy: Always
+#      initContainers:
+#      - name: wait-frontend
+#        image: alpine:3.6
+#        command: ['sh', '-c', 'set -x;  apk add --no-cache curl && 
+#          until timeout -t 2 curl -f "http://${FRONTEND_ADDR}"; do 
+#            echo "waiting for http://${FRONTEND_ADDR}"; 
+#            sleep 2;
+#          done;']
+#        env:
+#        - name: FRONTEND_ADDR
+#          value: "frontend:80"
+#      containers:
+#      - name: main
+#        image: gcr.io/google-samples/microservices-demo/loadgenerator:v0.1.2
+#        env:
+#        - name: FRONTEND_ADDR
+#          value: "frontend:80"
+#        - name: USERS
+#          value: "10"
+#        resources:
+#          requests:
+#            cpu: 300m
+#            memory: 256Mi
+#          limits:
+#            cpu: 500m
+#            memory: 512Mi
+#---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -604,7 +604,7 @@ spec:
             port: 6379
         volumeMounts:
         - mountPath: /data
-          name: redis-data
+          name: redis-data-pvc
         resources:
           limits:
             memory: 256Mi
@@ -613,8 +613,20 @@ spec:
             cpu: 70m
             memory: 200Mi
       volumes:
-      - name: redis-data
-        emptyDir: {}
+      - name: redis-data-pvc
+        persistentVolumeClaim:
+          claimName: redis-data-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redis-data-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
 ---
 apiVersion: v1
 kind: Service
