@@ -604,7 +604,7 @@ spec:
             port: 6379
         volumeMounts:
         - mountPath: /data
-          name: redis-data-pvc
+          name: redis-data
         resources:
           limits:
             memory: 256Mi
@@ -613,7 +613,7 @@ spec:
             cpu: 70m
             memory: 200Mi
       volumes:
-      - name: redis-data-pvc
+      - name: redis-data
         persistentVolumeClaim:
           claimName: redis-data-pvc
 ---
