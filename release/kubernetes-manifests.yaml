@@ -432,7 +432,6 @@ spec:
     port: 7070
     targetPort: 7070
 ---
-=======
 apiVersion: apps/v1
 kind: Deployment
 metadata:
