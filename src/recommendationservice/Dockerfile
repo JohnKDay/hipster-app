@@ -1,4 +1,6 @@
-FROM python:2.7-slim
+FROM python:2.7-slim as base
+
+FROM base as builder
 RUN apt-get update -qqy && \
 	apt-get -qqy install wget g++ && \
 	rm -rf /var/lib/apt/lists/*
