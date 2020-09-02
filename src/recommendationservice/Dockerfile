@@ -46,3 +46,19 @@ ENV DF_COMPONENT "recommendationservice"
 RUN dfctl register -a "$DF_APP" -c "$DF_COMPONENT" -o /usr/lib/libdf.so -v
 # option: dfctl register/create individual components in container
 
+# Warning: The above df-runtime container's built libdf.so install must match
+#  the version of the target container's libc.so.
+#  i.e. APP_IMAGE must contain a glibc >= 2.17
+
+FROM builder
+COPY --from=df-runtime /usr/lib/libdf.so /usr/lib/libdf.so
+
+
+# The following is an optional smoke test for redhat and debian distro types.
+RUN env LD_PRELOAD=/usr/lib/libdf.so sh -c 'rpm -q glibc || dpkg -l libc6' || \
+    (echo -e "\n\n\nError, DeepFactor dependency not met.\n\n\n/tmp/deepfactor.log:\n" \
+    && cat /tmp/deepfactor.log && false)
+
+# option: set LD_PRELOAD in app startup cmd or script
+ENV LD_PRELOAD=/usr/lib/libdf.so
+

@@ -8,7 +8,8 @@ RUN apt-get -qq update \
 
 COPY requirements.txt .
 
-RUN pip install --install-option="--prefix=/install" -r requirements.txt
+#RUN pip install --install-option="--prefix=/install" -r requirements.txt
+RUN pip install --prefix="/install" -r requirements.txt
 
 FROM base
 COPY --from=builder /install /usr/local
@@ -46,6 +47,10 @@ RUN dfctl register -a "$DF_APP" -c "$DF_COMPONENT" -o /usr/lib/libdf.so -v
 #  the version of the target container's libc.so.
 #  i.e. APP_IMAGE must contain a glibc >= 2.17
 #COPY /usr/lib/libdf.so /usr/lib/libdf.so
+FROM builder
+COPY --from=df-runtime /usr/lib/libdf.so /usr/lib/libdf.so
+
+
 
 
 # The following is an optional smoke test for redhat and debian distro types.
