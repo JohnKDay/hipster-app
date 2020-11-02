@@ -1,0 +1,11 @@
+cartservice alpine
+checkoutservice alpine
+currencyservice alpine
+frontend alpine
+paymentservice alpine
+productcatalogservice alpine
+shippingservice alpine
+adservice glibc
+emailservice glibc
+loadgenerator glibc
+recommendationservice glibc

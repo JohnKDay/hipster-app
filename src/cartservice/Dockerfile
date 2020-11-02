@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM microsoft/dotnet:2.1-sdk-alpine as builder
+FROM mcr.microsoft.com/dotnet/core/sdk:2.1-alpine as builder
 WORKDIR /app
 COPY . .
 RUN dotnet restore && \
@@ -20,7 +20,8 @@ RUN dotnet restore && \
     dotnet publish -c release -r linux-musl-x64 -o /cartservice
 
 # cartservice
-FROM alpine:3.8
+#FROM alpine:3.8
+FROM alpine as target
 
 RUN GRPC_HEALTH_PROBE_VERSION=v0.2.0 && \
     wget -qO/bin/grpc_health_probe https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/${GRPC_HEALTH_PROBE_VERSION}/grpc_health_probe-linux-amd64 && \
@@ -30,14 +31,17 @@ RUN GRPC_HEALTH_PROBE_VERSION=v0.2.0 && \
 # busybox-extras => telnet
 RUN apk add --no-cache \
     busybox-extras \
-    libc6-compat \
     libunwind \
     libuuid \
     libgcc \
     libstdc++ \
-    libssl1.0 \
+    libssl1.1 \
     libintl \
     icu
+RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
+    wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.32-r0/glibc-2.32-r0.apk && \
+    apk add glibc-2.32-r0.apk
+
 WORKDIR /app
 COPY --from=builder /cartservice .
 ENTRYPOINT ["./cartservice", "start"]

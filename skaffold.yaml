@@ -43,7 +43,8 @@ build:
   - image: adservice
     context: src/adservice
   tagPolicy:
-    gitCommit: {}
+    envTemplate:
+      template: nodf-latest
   local:
     useBuildkit: true
 deploy:
