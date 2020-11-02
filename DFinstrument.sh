@@ -3,11 +3,10 @@
 set -vx
 set -euf -o pipefail
 
-appname=DFdemo
-#apppath=~/git/microservices-demo
+appname=Hipster-app
 apppath=${PWD}
-#registry_src=${1:-localhost:32000}
-#registry_dst=${2:-localhost:32000}
+#registry_src=${1:-localhost:32000} # used when deploying using microk8s
+#registry_dst=${2:-localhost:32000} # used when deploying using microk8s
 registry_src=${1:-johnkday} # Set to use docker.io/johnkday regsitry
 registry_dst=${2:-johnkday} # Set to use docker.io/johnkday registry
 
