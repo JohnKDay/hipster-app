@@ -17,6 +17,7 @@ spec:
         - name: PORT
           value: "9555"
         image: johnkday/adservice:df-latest
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:
@@ -80,6 +81,7 @@ spec:
         - name: LISTEN_ADDR
           value: 0.0.0.0
         image: johnkday/cartservice:df-latest
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:
@@ -152,6 +154,7 @@ spec:
         - name: CART_SERVICE_ADDR
           value: cartservice:7070
         image: johnkday/checkoutservice:df-latest
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:
@@ -206,6 +209,7 @@ spec:
         - name: PORT
           value: "7000"
         image: johnkday/currencyservice:df-latest
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:
@@ -264,6 +268,7 @@ spec:
         - name: DISABLE_PROFILER
           value: "1"
         image: johnkday/emailservice:df-latest
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:
@@ -339,6 +344,7 @@ spec:
         - name: ENV_PLATFORM
           value: gcp
         image: johnkday/frontend:df-latest
+        imagePullPolicy: Always
         livenessProbe:
           httpGet:
             httpHeaders:
@@ -418,6 +424,7 @@ spec:
         - name: USERS
           value: "10"
         image: johnkday/loadgenerator:df-latest
+        imagePullPolicy: Always
         name: main
         resources:
           limits:
@@ -448,6 +455,7 @@ spec:
         - name: PORT
           value: "50051"
         image: johnkday/paymentservice:df-latest
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:
@@ -503,6 +511,7 @@ spec:
         - name: PORT
           value: "3550"
         image: johnkday/productcatalogservice:df-latest
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:
@@ -560,6 +569,7 @@ spec:
         - name: PRODUCT_CATALOG_SERVICE_ADDR
           value: productcatalogservice:3550
         image: johnkday/recommendationservice:df-latest
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:
@@ -672,6 +682,7 @@ spec:
         - name: PORT
           value: "50051"
         image: johnkday/shippingservice:df-latest
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:

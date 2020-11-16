@@ -5,10 +5,10 @@ set -euf -o pipefail
 
 appname=Hipster-app
 apppath=${PWD}
-#registry_src=${1:-localhost:32000} # used when deploying using microk8s
-#registry_dst=${2:-localhost:32000} # used when deploying using microk8s
-registry_src=${1:-johnkday} # Set to use docker.io/johnkday regsitry
-registry_dst=${2:-johnkday} # Set to use docker.io/johnkday registry
+registry_src=${1:-localhost:32000} # used when deploying using microk8s
+registry_dst=${2:-localhost:32000} # used when deploying using microk8s
+#registry_src=${1:-johnkday} # Set to use docker.io/johnkday regsitry
+#registry_dst=${2:-johnkday} # Set to use docker.io/johnkday registry
 
 while read name bintype
 do

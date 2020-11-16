@@ -16,7 +16,8 @@ spec:
       - env:
         - name: PORT
           value: "9555"
-        image: johnkday/adservice:nodf-latest@sha256:60e841ee1b55ed45d2d271264a0ac68342410bdf29ede1d46b5f672854d0b0bb
+        image: johnkday/adservice:nodf-latest
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:
@@ -79,7 +80,8 @@ spec:
           value: "7070"
         - name: LISTEN_ADDR
           value: 0.0.0.0
-        image: johnkday/cartservice:nodf-latest@sha256:1cdb52b33e69577103325dcc169344b896d79d4986a7581bdd10426a2181896e
+        image: johnkday/cartservice:nodf-latest
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:
@@ -151,7 +153,8 @@ spec:
           value: currencyservice:7000
         - name: CART_SERVICE_ADDR
           value: cartservice:7070
-        image: johnkday/checkoutservice:nodf-latest@sha256:90adbe00a2b592c27abde6912aaf21d48b450d601b366046a7cf6c409317f789
+        image: johnkday/checkoutservice:nodf-latest
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:
@@ -205,7 +208,8 @@ spec:
       - env:
         - name: PORT
           value: "7000"
-        image: johnkday/currencyservice:nodf-latest@sha256:97fed73c7ffd6e57a08204a3943d8cf09ac4ab4154e257c8690e81ff54c8c8c4
+        image: johnkday/currencyservice:nodf-latest
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:
@@ -263,7 +267,8 @@ spec:
           value: "8080"
         - name: DISABLE_PROFILER
           value: "1"
-        image: johnkday/emailservice:nodf-latest@sha256:04845311d7502bf47e099d8e872f66c27165f3fba2a625e7366eaf14d6597d6a
+        image: johnkday/emailservice:nodf-latest
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:
@@ -338,7 +343,8 @@ spec:
           value: adservice:9555
         - name: ENV_PLATFORM
           value: gcp
-        image: johnkday/frontend:nodf-latest@sha256:daef62049455c35bdf26a3dfe3156564bd38f5332ccb7f91ee72c73ebd14e83d
+        image: johnkday/frontend:nodf-latest
+        imagePullPolicy: Always
         livenessProbe:
           httpGet:
             httpHeaders:
@@ -417,7 +423,8 @@ spec:
           value: frontend:80
         - name: USERS
           value: "10"
-        image: johnkday/loadgenerator:nodf-latest@sha256:76fc3786597bb9da72ea3aedd096b86c169e81c3369257d106ca2d7ad2e37afc
+        image: johnkday/loadgenerator:nodf-latest
+        imagePullPolicy: Always
         name: main
         resources:
           limits:
@@ -447,7 +454,8 @@ spec:
       - env:
         - name: PORT
           value: "50051"
-        image: johnkday/paymentservice:nodf-latest@sha256:fbe778223a0aee5c89966dc96f43b1f33c12f7b2ee0a425949dd687281e650e6
+        image: johnkday/paymentservice:nodf-latest
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:
@@ -502,7 +510,8 @@ spec:
       - env:
         - name: PORT
           value: "3550"
-        image: johnkday/productcatalogservice:nodf-latest@sha256:77444511e2083d88c76352f00d0e31424dc6e6db29bb71099ea66c3c551ca9a8
+        image: johnkday/productcatalogservice:nodf-latest
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:
@@ -559,7 +568,8 @@ spec:
           value: "8080"
         - name: PRODUCT_CATALOG_SERVICE_ADDR
           value: productcatalogservice:3550
-        image: johnkday/recommendationservice:nodf-latest@sha256:efd1424a7db38ec643a3c86c41d67849e7e11fa9e02d08e6f87475626798f690
+        image: johnkday/recommendationservice:nodf-latest
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:
@@ -671,7 +681,8 @@ spec:
       - env:
         - name: PORT
           value: "50051"
-        image: johnkday/shippingservice:nodf-latest@sha256:489cd312bfc0deaf0ee9a0702689939ae00fb504e6a037df9d3b7c92ab37ad69
+        image: johnkday/shippingservice:nodf-latest
+        imagePullPolicy: Always
         livenessProbe:
           exec:
             command:
